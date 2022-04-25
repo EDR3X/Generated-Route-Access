@@ -17,7 +17,10 @@ class ShowCounter extends StatelessWidget {
           children: [
             BlocBuilder<CounterCubit, CounterState>(
               builder: (context, state) {
-                return Text("${context.watch<CounterCubit>().state.counter}");
+                return Text(
+                  "${context.watch<CounterCubit>().state.counter}",
+                  style: Theme.of(context).textTheme.headline2,
+                );
               },
             )
           ],
