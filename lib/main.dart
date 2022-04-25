@@ -32,6 +32,7 @@ class _MyAppState extends State<MyApp> {
       //         child: const ShowCounter(),
       //       ),
       // },
+      //* this method bellow does the same thing as method commented above
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/':
