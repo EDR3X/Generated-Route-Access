@@ -20,17 +20,37 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Bloc Named Route",
+      title: "Bloc Generated Route",
       theme: ThemeData(primarySwatch: Colors.green),
-      routes: {
-        '/': (context) => BlocProvider.value(
-              value: _counterCubit,
-              child: const HomePage(),
-            ),
-        '/counter': (context) => BlocProvider.value(
-              value: _counterCubit,
-              child: const ShowCounter(),
-            ),
+      // routes: {
+      //   '/': (context) => BlocProvider.value(
+      //         value: _counterCubit,
+      //         child: const HomePage(),
+      //       ),
+      //   '/counter': (context) => BlocProvider.value(
+      //         value: _counterCubit,
+      //         child: const ShowCounter(),
+      //       ),
+      // },
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(
+              builder: (context) => BlocProvider.value(
+                value: _counterCubit,
+                child: const HomePage(),
+              ),
+            );
+          case '/counter':
+            return MaterialPageRoute(
+              builder: (context) => BlocProvider.value(
+                value: _counterCubit,
+                child: const ShowCounter(),
+              ),
+            );
+          default:
+            return null;
+        }
       },
     );
   }
